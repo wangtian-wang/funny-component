@@ -1,0 +1,111 @@
+{
+  "data": {
+    "menus": [
+      {
+        "icon": "icon-xitong",
+        "id": 1,
+        "isShow": true,
+        "keepalive": false,
+        "name": "系统",
+        "orderNum": 255,
+        "parentId": null,
+        "perms": null,
+        "router": "/sys",
+        "type": 0,
+        "viewPath": null
+      },
+      {
+        "icon": "icon-fenghuangxiangmutubiao_quanxian",
+        "id": 3,
+        "isShow": true,
+        "keepalive": false,
+        "name": "权限管理",
+        "orderNum": 0,
+        "parentId": 1,
+        "perms": null,
+        "router": "/sys/permssion",
+        "type": 0,
+        "viewPath": null
+      },
+      {
+        "icon": "icon-zhanghu",
+        "id": 4,
+        "isShow": true,
+        "keepalive": false,
+        "name": "用户列表",
+        "orderNum": 0,
+        "parentId": 3,
+        "perms": null,
+        "router": "/sys/permssion/user",
+        "type": 1,
+        "viewPath": "views/system/permission/user"
+      },
+      {
+        "icon": "icon-caidan",
+        "id": 5,
+        "isShow": true,
+        "keepalive": false,
+        "name": "菜单列表",
+        "orderNum": 0,
+        "parentId": 3,
+        "perms": null,
+        "router": "/sys/permssion/menu",
+        "type": 1,
+        "viewPath": "views/system/permission/menu"
+      },
+      {
+        "icon": "icon-zujian",
+        "id": 6,
+        "isShow": true,
+        "keepalive": false,
+        "name": "组件",
+        "orderNum": 255,
+        "parentId": null,
+        "perms": null,
+        "router": "/comp",
+        "type": 0,
+        "viewPath": null
+      },
+      {
+        "icon": "icon-a-zu17626",
+        "id": 7,
+        "isShow": true,
+        "keepalive": false,
+        "name": "拖拽弹框",
+        "orderNum": 0,
+        "parentId": 6,
+        "perms": null,
+        "router": "/comp/dialog",
+        "type": 1,
+        "viewPath": "views/comp/dialog"
+      },
+      {
+        "icon": "icon-biaodanzujian-biaoge",
+        "id": 8,
+        "isShow": true,
+        "keepalive": false,
+        "name": "表单",
+        "orderNum": 0,
+        "parentId": 6,
+        "perms": null,
+        "router": "/comp/input",
+        "type": 1,
+        "viewPath": "views/comp/input"
+      },
+      {
+        "icon": "icon-shouye",
+        "id": 9,
+        "isShow": true,
+        "keepalive": false,
+        "name": "消息",
+        "orderNum": 2,
+        "parentId": 6,
+        "perms": null,
+        "router": "/comp/message",
+        "type": 1,
+        "viewPath": "views/comp/message"
+      }
+    ],
+    "perms": ["sys:user:add", "sys:user:delete", "sys:menu:add", "sys:menu:delete", "sys:menu:list"]
+  }
+}
