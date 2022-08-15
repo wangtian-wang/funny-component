@@ -104,6 +104,32 @@
         "router": "/comp/message",
         "type": 1,
         "viewPath": "views/comp/message"
+      },
+      {
+        "icon": "icon-shouye",
+        "id": 11,
+        "isShow": true,
+        "keepalive": false,
+        "name": "日历组件",
+        "orderNum": 2,
+        "parentId": 6,
+        "perms": null,
+        "router": "/comp/calender",
+        "type": 1,
+        "viewPath": "views/comp/calender"
+      },
+      {
+        "icon": "icon-zhanghu",
+        "id": 12,
+        "isShow": true,
+        "keepalive": false,
+        "name": "穿梭框",
+        "orderNum": 2,
+        "parentId": 6,
+        "perms": null,
+        "router": "/comp/transfer",
+        "type": 1,
+        "viewPath": "views/comp/transfer"
       }
     ],
     "perms": ["sys:user:add", "sys:user:delete", "sys:menu:add", "sys:menu:delete", "sys:menu:list"]

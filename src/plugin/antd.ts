@@ -12,6 +12,7 @@ import {
   Row,
   Select,
   DatePicker,
+  Button,
 } from 'ant-design-vue';
 import '../style/index.less';
 export function setupAntd(app: App) {
@@ -28,5 +29,6 @@ export function setupAntd(app: App) {
     .use(Col)
     .use(Row)
     .use(Select)
-    .use(DatePicker);
+    .use(DatePicker)
+    .use(Button);
 }

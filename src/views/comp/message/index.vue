@@ -2,7 +2,7 @@
   <div>
     <h1>this is a demo about message box</h1>
     <a-button type="primary" @click="showConfirmMessage"> confirm</a-button>
-    <a-button type="primary" danger @click="showMessage"> default</a-button>
+    <a-button type="primary" @click="showMessage"> default</a-button>
     <a-button type="primary" @click="showPromptMessage"> prompt</a-button> <br />
     <h1>this is a demo about message</h1>
     <a-button type="primary" @click="showDefaultMsg"> default</a-button>
@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { Popover, Button as AButton } from 'ant-design-vue';
+  import { Popover } from 'ant-design-vue';
   /**message box */
   import MyMessage from '@/components/common/message-box/index';
   /**messages */
