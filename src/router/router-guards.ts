@@ -23,10 +23,7 @@ export function createRouterGuards(router: Router, whiteNameList: WhiteNameList)
         // 刷新页面  重新获取路由数据 注册路由
         const hasRoute = router.hasRoute(to.name!);
         await userStore.afterLogin();
-        console.log('to name', to);
         if (hasRoute) {
-          console.log('1111111');
-
           next();
         } else {
           next({ ...to, replace: true });

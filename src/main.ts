@@ -7,8 +7,9 @@ import { createApp } from 'vue';
 import { setupRouter } from '@/router/index';
 import { setupStore } from '@/store/index';
 import { setupAntd, setupCustomComponent, setupAssets } from '@/plugin/index';
-
+import MyStore from './my-store/test';
 const app = createApp(App);
+app.use(MyStore);
 function setupPlugins() {
   setupAntd(app);
   setupAssets();

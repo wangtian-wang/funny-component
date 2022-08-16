@@ -51,7 +51,6 @@
   });
   const userStore = useUserStore();
   const menus = computed(() => userStore.menus);
-  console.log('🚀 ~ file: menu.vue ~ line 54 ~ menus', menus);
 
   const currentRoute = useRoute();
   const router = useRouter();
