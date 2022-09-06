@@ -3,7 +3,7 @@ const path = require('path');
 const resolve = (dir) => path.join(__dirname, dir);
 const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV);
 const IS_DEV = ['development'].includes(process.env.NODE_ENV);
-
+console.log(process.env.VUE_APP_BaseUrl, 'in vue config');
 // const port = process.env.port || process.env.config.port || 8098;
 
 /**
