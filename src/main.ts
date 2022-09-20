@@ -9,9 +9,11 @@ import { setupStore } from '@/store/index';
 import { setupAntd, setupCustomComponent, setupAssets } from '@/plugin/index';
 import MyStore from './my-store/test';
 import lazyLoad from './directive/index';
+import WaterMark from './components/common/waterMark/index';
 const app = createApp(App);
 app.use(MyStore);
 app.use(lazyLoad, { preload: 1 });
+app.use(WaterMark);
 function setupPlugins() {
   setupAntd(app);
   setupAssets();

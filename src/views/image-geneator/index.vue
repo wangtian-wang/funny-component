@@ -1,16 +1,23 @@
 <template>
   <div class="container" style="color: antiquewhite">
     <!-- <ImageGeneator></ImageGeneator> -->
-    <template v-if="imgData.length >= 1">
+    <!-- <template v-if="imgData.length >= 1">
       <div v-for="img in imgData" :key="img.id">
         <img v-lazy="img.src" :src="img.src" alt="" />
       </div>
-    </template>
+    </template> -->
+    <WaterMark v-bind="waterMarkProps"></WaterMark>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue';
+  import { ref, reactive } from 'vue';
+  const waterMarkProps = reactive({
+    width: 100,
+    content: ' i am mark text',
+    fontColor: 'pink',
+    // image: require('./img/1.jpg'),
+  });
 
   const imgData = ref<any[]>([]);
   const imgFn = async () => {
@@ -20,7 +27,6 @@
     }
   };
   imgFn();
-  console.log(img);
 
   // import ImageGeneator from '@/components/common/image-geneator/index.vue';
 </script>
