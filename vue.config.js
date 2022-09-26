@@ -28,18 +28,10 @@ module.exports = defineConfig({
           javascriptEnabled: true,
           modifyVars: {},
         },
-        // additionalData: `
-        //   @import "ant-design-vue/dist/antd.variable.min.css";
-        //  `,
       },
     },
   },
   chainWebpack: (config) => {
-    // console.log(config);
-    // config.plugins.store('html').tap((args) => {
-    //   args[0].title = 'vue3+ ts learning';
-    //   return args;
-    // });
     config.module.rule('svg').exclude.add(resolve('src/assets/icons')).end();
     config.module
       .rule('icons')
@@ -52,10 +44,4 @@ module.exports = defineConfig({
         symbolId: 'svg-icon-[name]',
       });
   },
-  // configureWebpack: {
-  //   plugins: [require('unplugin-vue-define-options/webpack')()],
-  // },
-  // configureWebpack: (config) => {
-  //   config.plugins.push(require('unplugin-vue-define-options/webpack')());
-  // },
 });
