@@ -2,7 +2,7 @@
   <div :class="baseClass">
     <div :class="innerClass" @click="stepClick">
       <template v-if="icon && typeof icon === 'string'">
-        <IconFont :type="icon" viewBox="0 0 100 100"></IconFont>
+        <IconFont :type="icon" margin-right="8"></IconFont>
       </template>
       <template v-else>
         <div :class="iconClass" v-html="renderIcon()"></div>
