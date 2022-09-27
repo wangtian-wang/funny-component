@@ -11,7 +11,7 @@ export default {
     type: [String, Function],
   },
   icon: {
-    type: [Boolean, Function],
+    type: [Boolean, Function, String],
     default: true,
   },
   title: {

@@ -1,7 +1,12 @@
 <template>
   <div :class="baseClass">
     <div :class="innerClass" @click="stepClick">
-      <div :class="iconClass" v-html="renderIcon()"></div>
+      <template v-if="icon && typeof icon === 'string'">
+        <IconFont :type="icon" viewBox="0 0 100 100"></IconFont>
+      </template>
+      <template v-else>
+        <div :class="iconClass" v-html="renderIcon()"></div>
+      </template>
       <div :class="contentClass">
         <div :class="titleClass">{{ props.title }}</div>
         <div :class="descripClass">{{ props.content }}</div>
@@ -16,7 +21,7 @@
   import prop from './props';
 
   const props = defineProps(prop);
-  // console.log(useAttrs(), ' attr in stem-item');
+  console.log(props.icon, ' attr in stem-item');
   // injected
   const stepState = inject('StepState', undefined);
   const stepProps = inject('StepProps', undefined);

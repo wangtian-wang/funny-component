@@ -9,6 +9,7 @@
         :content="item.content"
         :item="item"
         :value="item.value"
+        :icon="item.icon"
         :status="handleStutas(item, idx)"
         :index="handleIndex(idx)"></StepItem>
     </template>
