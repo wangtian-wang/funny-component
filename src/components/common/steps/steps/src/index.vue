@@ -8,6 +8,7 @@
         :title="item.title"
         :content="item.content"
         :item="item"
+        :value="item.value"
         :status="handleStutas(item, idx)"
         :index="handleIndex(idx)"></StepItem>
     </template>
@@ -60,7 +61,7 @@
   const getOptions = () => {
     let options: any = [];
     if (props.options?.length) {
-      console.log();
+      options = props.sequence === 'reverse' ? props.options.slice().reverse() : props.options;
     } else {
       const nodes = getChildComponentByName('StepItem');
       options = getOptionListBySlots(nodes);
