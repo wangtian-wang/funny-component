@@ -1,7 +1,6 @@
 <template>
   <div :class="baseClass">
     <!-- 将关于父组件中处理的数据传递给子组件 -->
-    <!-- <slot></slot> -->
 
     <template v-for="(item, idx) in options" :key="item">
       <StepItem
@@ -10,19 +9,33 @@
         :item="item"
         :value="item.value"
         :icon="item.icon"
-        :status="handleStutas(item, idx)"
-        :index="handleIndex(idx)"></StepItem>
+        :status="handleStatus(item, idx)"
+        :index="handleIndex(idx)">
+        <template v-if="current === idx" #extra>
+          <div>上一步</div>
+        </template>
+      </StepItem>
     </template>
-    <!-- <StepItem title="已完成的步骤" content="已完成1111"></StepItem> -->
+
+    <!-- 插槽写法 -->
+    <!-- <slot></slot> -->
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { provide, reactive, VNode, watchEffect, ref, toRefs } from 'vue';
+  /**
+   * step 组件获取到 自己的插槽 step-item,但是无法获取每个step-item内部的插槽情况
+   *
+   *
+   *
+   * 采取目前的写法 slot是能正常显示了 但是每个step-item的属性 又无法传递了
+   */
+  import { provide, reactive, VNode, watchEffect, ref, toRefs, useSlots, computed } from 'vue';
   import Prop from './props';
   import stepItemProps from '../../steps-item/src/props';
   import { useChildComponentSlots, useVModel } from '../../hook';
-  import { computed } from '@vue/reactivity';
+
+  const slots = !!useSlots().hello;
 
   // init props
   const props = defineProps(Prop);
@@ -69,6 +82,7 @@
     }
     return options;
   };
+
   watchEffect(() => {
     getOptions()?.forEach((item, index) => {
       if (item.value !== undefined) {
@@ -82,6 +96,7 @@
     'StepState',
     reactive({
       current: innerCurrent,
+      options: getOptions(),
       setCurrent: setInnerCurrent,
     }),
   );
@@ -93,7 +108,7 @@
      innerCurrent 是 step组件的prop current 表示当前进行到哪一步
 
    */
-  const handleStutas = (itemProps: any, index: number) => {
+  const handleStatus = (itemProps: any, index: number) => {
     if (itemProps.status && itemProps.status !== 'default') return itemProps.status;
     if (innerCurrent.value === 'finish') return 'finish';
     // value 不存在时，使用 index 进行区分每一个步骤
@@ -118,7 +133,10 @@
     const stepIndex = props.sequence === 'reverse' ? options.length - index - 1 : index;
     return stepIndex;
   };
-
+  provide('handleStatus', {
+    handleStatus,
+    handleIndex,
+  });
   // class
   const COMPONENT_NAME = ref('step');
   const baseClass = computed(() => {

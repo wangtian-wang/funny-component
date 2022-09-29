@@ -1,12 +1,13 @@
 import { getCurrentInstance, VNode, Slots, Fragment, Component, ref } from 'vue';
+
 export function useChildComponentSlots() {
   const instance = getCurrentInstance();
   return (childComponentName: string, slots?: Slots): VNode[] => {
     if (!slots) {
       slots = instance?.slots;
     }
-    const content = slots?.default?.() || [];
 
+    const content = slots?.default?.() || [];
     // 满足基于基础组件封装场景，递归找到子组件
     const childList: VNode[] = [];
     const getChildren = (content: VNode[]) => {

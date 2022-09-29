@@ -2,7 +2,7 @@
   <div :class="baseClass">
     <div :class="innerClass" @click="stepClick">
       <template v-if="icon && typeof icon === 'string'">
-        <IconFont :type="icon" margin-right="8"></IconFont>
+        <IconFont :type="icon" :margin-right="8"></IconFont>
       </template>
       <template v-else>
         <div :class="iconClass" v-html="renderIcon()"></div>
@@ -10,21 +10,28 @@
       <div :class="contentClass">
         <div :class="titleClass">{{ props.title }}</div>
         <div :class="descripClass">{{ props.content }}</div>
-        <div :class="extraClass">{{ props.extra }}</div>
+
+        <div :class="extraClass">
+          <slot name="extra"></slot>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { computed, inject, ref, useAttrs } from 'vue';
+  import { computed, inject, ref, useAttrs, useSlots } from 'vue';
+
   import prop from './props';
 
   const props = defineProps(prop);
-  console.log(props.icon, ' attr in stem-item');
+  const slots = useSlots();
+
   // injected
   const stepState = inject('StepState', undefined);
+  const options = stepState?.options;
   const stepProps = inject('StepProps', undefined);
+  const { handleStatus, handleIndex } = inject('handleStatus');
 
   // boolean props
   const canClick = computed(() => props.status !== 'process' && !stepProps?.readonly);
@@ -34,6 +41,7 @@
   const statusClass = computed(() => ({
     [`${COMPONENT_NAME.value}--${props.status}`]: props.status,
   }));
+
   const baseClass = computed(() => [`${COMPONENT_NAME.value}`, statusClass.value]);
   const innerClass = computed(() => {
     return [
